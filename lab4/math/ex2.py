@@ -1,0 +1,7 @@
+print("Enter height:")
+h=int(input())
+print("Enter base1:")
+b1=int(input())
+print("Enter base2:")
+b2=int(input())
+print((b1+b2)/2*h)
