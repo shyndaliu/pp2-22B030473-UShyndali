@@ -1,3 +1,4 @@
 from datetime import datetime as dt
-cur=dt.now()
-print(cur.microsecond)
+now=dt.now()
+now=now.strftime("%d/%m/%Y, %H:%M:%S")
+print(now)

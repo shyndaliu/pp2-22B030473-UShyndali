@@ -1,3 +1,2 @@
 import datetime as dt
-today=dt.date.today()
-print(today.day-5)
+print(dt.date.today()+dt.timedelta(-5))
