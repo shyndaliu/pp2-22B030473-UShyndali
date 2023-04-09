@@ -7,22 +7,22 @@ connection=pgsql.connect(host="localhost", dbname="postgres", user="postgres",
 cur=connection.cursor()
 
 cur.execute("""CREATE TABLE IF NOT EXISTS PhoneBook (
-    id INT,
+    surname VARCHAR(255),
     name VARCHAR(255),
     number INT
 );
 """)
 
-def update(id, mode, newv):
+def update(sn, mode, newv):
     cur.execute("""UPDATE PhoneBook
     SET {} = '{}'
-    WHERE id = {}
-    """.format(mode,newv,id))
+    WHERE surname = '{}'
+    """.format(mode,newv,sn))
 
-def delete(id):
+def delete(sn):
     cur.execute("""DELETE FROM Phonebook
-    WHERE id={}
-    """.format(id))
+    WHERE surname='{}'
+    """.format(sn))
 
 #INSERTING DATA--------------------------
 
@@ -33,14 +33,14 @@ while True:
     if mode=="stop":
         break
     mytuple=[]
-    print("enter id:")
+    print("enter surname:")
     mytuple.append(input())
     print("enter name:")
     mytuple.append(input())
     print("enter number:")
     mytuple.append(input())
     mytuple=tuple(mytuple)
-    cur.execute("""INSERT INTO PhoneBook (id, name ,number) VALUES
+    cur.execute("""INSERT INTO PhoneBook (surname, name ,number) VALUES
     {};
     """.format(mytuple))
 
@@ -65,7 +65,7 @@ while True:
         break
     cur.execute("""SELECT * FROM PhoneBook""")
     print(cur.fetchall())
-    print("Enter id")
+    print("Enter surname")
     idtochange=input()
     print("What you want to change? name/number")
     mode=input()
@@ -81,7 +81,7 @@ while True:
         break
     cur.execute("""SELECT * FROM PhoneBook""")
     print(cur.fetchall())
-    print("Enter id")
+    print("Enter surname")
     idtodelete=input()
     delete(idtodelete)
 
